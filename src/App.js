@@ -8,14 +8,17 @@ const RightHandComponent = () => {
   return <p style={{ backgroundColor: 'lightblue'}}>right</p>
 }
 
+const Test = () => {
+  return <label>Green</label>
+}
+
 function App() {
   return (
-    <SplitScreen
-      left={LeftHandComponent}
-      right={RightHandComponent}
-      leftWeight={1}
-      rightWeight={3}
-    />
+    <SplitScreen leftWeight={1} rightWeight={3}>
+      <LeftHandComponent />
+      <RightHandComponent />
+      <Test />
+    </SplitScreen>
   );
 }
 
