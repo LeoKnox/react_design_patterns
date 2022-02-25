@@ -1,12 +1,11 @@
-import './App.css';
 import { SplitScreen } from './SplitScreen';
 
 const LeftHandComponent = () => {
-  return <h1>Left</h1>
+  return <h1 style={{ backgroundColor: 'gray'}}>Left</h1>
 }
 
 const RightHandComponent = () => {
-  return <p>right</p>
+  return <p style={{ backgroundColor: 'lightblue'}}>right</p>
 }
 
 function App() {
