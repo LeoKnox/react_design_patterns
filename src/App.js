@@ -5,7 +5,7 @@ const LeftHandComponent = () => {
 }
 
 const RightHandComponent = () => {
-  return <p style={{ backgroundColor: 'lightblue'}}>right</p>
+  return <p style={{ backgroundColor: 'lightblue'}}>right<Test /></p>
 }
 
 const Test = () => {
@@ -17,7 +17,6 @@ function App() {
     <SplitScreen leftWeight={1} rightWeight={3}>
       <LeftHandComponent />
       <RightHandComponent />
-      <Test />
     </SplitScreen>
   );
 }
