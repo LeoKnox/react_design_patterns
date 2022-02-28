@@ -1,24 +1,45 @@
-import { SplitScreen } from './SplitScreen';
+import { useState } from 'react';
+import { UncontrolledOnboardingFlow } from './UncontrolledOnboardingFlow';
+import { ControlledOnboardingFlow } from './ControlledOnboardingFlow';
 
-const LeftHandComponent = () => {
-  return <h1 style={{ backgroundColor: 'gray'}}>Left</h1>
-}
-
-const RightHandComponent = () => {
-  return <p style={{ backgroundColor: 'lightblue'}}>right<Test /></p>
-}
-
-const Test = () => {
-  return <label>Green</label>
-}
+const StepOne = ({ goToNext }) =>(
+  <>
+    <h1>Step 1</h1>
+    <button onClick={() => goToNext({ name: "joe jinx"})}>Next</button>
+  </>
+) 
+const StepTwo = ({ goToNext }) =>(
+  <>
+    <h1>Step 2</h1>
+    <button onClick={() => goToNext({ age: 88 })}>Next</button>
+  </>
+) 
+const StepThree = ({ goToNext }) =>(
+  <>
+    <h1>Step 3</h1>
+    <button onClick={() => goToNext({ hairColor: "indigo"})}>Next</button>
+  </>
+) 
 
 function App() {
-  return (
-    <SplitScreen leftWeight={1} rightWeight={3}>
-      <LeftHandComponent />
-      <RightHandComponent />
-    </SplitScreen>
-  );
+  const [onboardingData, setOnboardingData] = useState({});
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const onNext = stepData => {
+    setOnboardingData({ ...onboardingData, ...stepData })
+    setCurrentIndex(currentIndex + 1);
+  }
+
+	return (
+    <ControlledOnboardingFlow 
+      currentIndex ={currentIndex}
+      onNext={onNext}
+    >
+      <StepOne />
+      <StepTwo />
+      <StepThree />
+    </ControlledOnboardingFlow>
+	);
 }
 
 export default App;
